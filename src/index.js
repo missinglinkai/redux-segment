@@ -12,6 +12,9 @@ function emit(type: string, fields: Array, { client }: Object) {
   const currentClient = client();
 
   if (typeof currentClient[type] === 'function') {
+    if (fields[1] && fields[1].action) {
+      fields[0] = fields[1].action;
+    }
     currentClient[type](...fields);
   } else {
     warn(`The analytics client you provided doesn't support ${ type } events.`);
