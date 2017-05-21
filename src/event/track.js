@@ -7,9 +7,10 @@ function validateTrackFields(fields: Object, actionType: string) {
 }
 
 function getTrackProperties(fields: Object) {
-  if (!fields.properties) return [ 'event', 'options' ];
+  let temp = ['event'];
+  temp.push(...Object.keys(fields))
 
-  return [ 'event', 'properties', 'options' ];
+  return temp
 }
 
 function extractFields(obj: Object, keys: Array, actionType: string) {
